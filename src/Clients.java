@@ -1,6 +1,11 @@
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Clients {
+public class Clients implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String address;
     private String phoneNumber;
@@ -13,6 +18,17 @@ public class Clients {
         this.phoneNumber = phoneNumber;
         this.balance = balance;
         this.pets = pets;
+    }
+
+    @Override
+    public String toString() {
+        return "Clients{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", balance=" + balance +
+                ", pets=" + pets +
+                '}';
     }
 
     public String getName() {
