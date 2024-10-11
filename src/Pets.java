@@ -1,14 +1,42 @@
-public class Pets {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Pets implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    private String species;
     private String breed;
     private String name;
     private int age;
     private String description;
 
-    public Pets(String breed, String name, int age, String description) {
+    public Pets(String species, String breed, String name, int age, String description)  {
+        this.species = species;
         this.breed = breed;
         this.name = name;
         this.age = age;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Pets{" +
+                "Nome='" + name + '\n' +
+                "Espécie='" + species + '\n' +
+                "Raça='" + breed + '\n' +
+                "Nome='" + name + '\n' +
+                "Idade='" + age + '\n' +
+                "Descrição='" + description + '\n' +
+                '}';
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public String getBreed() {
