@@ -1,42 +1,42 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DataCrud {
-    public void createFile(){
-        try(FileWriter writer = new FileWriter("Dados.dat", true)) {
+    public void createFile(Clients clients, Pets pets){
+        try(FileOutputStream fileOut = new FileOutputStream("Dados.dat", true);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
+            objectOut.writeObject(clients);
+            objectOut.writeObject(pets);
             System.out.println("Arquivo criado");
         } catch (IOException e){
             System.err.println("Erro na abertura do arquivo: "+ e.getMessage());
         }
     }
 
-    public StringBuilder readFile(String path){
-        StringBuilder fileContent = new StringBuilder();
-        try(Scanner scanner = new Scanner(new File(path))){
-            while (scanner.hasNextLine()){
-                String line = scanner.nextLine();
-                System.out.println(line);
-                fileContent.append(line).append(System.lineSeparator());
-            }
-        } catch (FileNotFoundException e){
-            System.err.println("Arquivo não encontrado: "+ e.getMessage());
+    @SuppressWarnings("unchecked")
+    public ArrayList<Clients> readFile(String path){
+        ArrayList<Clients> clientsList = new ArrayList<>();
+        try (FileInputStream fileIn = new FileInputStream("Dados.dat");
+             ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
+
+            clientsList = (ArrayList<Clients>) objectIn.readObject();
+            System.out.println("Client list deserialized.");
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Erro na leitura do arquivo: "+ e.getMessage());
         }
-        return fileContent;
+        return clientsList;
     }
 
-    public void updateFile(StringBuilder fileContent){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Conteúdo do arquivo:");
-        System.out.println(fileContent.toString());
-        System.out.println("Digite o novo texto (pressione Enter para manter o texto atual):");
-        String updatedText = input.nextLine();
-        if(!updatedText.isEmpty()){
-            
+    public void updateFile(String clientName, Clients updatedClient, ArrayList<Clients> clientsList){
+        for (int i = 0; i < clientsList.size(); i++) {
+            if (clientsList.get(i).getName().equals(clientName)) {
+                clientsList.set(i, updatedClient);  // Update with new client info
+                System.out.println("Client updated: " + updatedClient.getName());
+                break;
+            }
         }
-        input.close();
     }
     public void deleteFile(){
 
