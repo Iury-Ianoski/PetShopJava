@@ -8,6 +8,8 @@ public class Main {
     static ArrayList<Pets> petsList = DataCrud.readPets("Dados.dat");
     public static void main(String[] args) {
         System.out.println(servicesList);
+        System.out.println(clientsList);
+        System.out.println(petsList);
         int opcMenu;
         while (true){
             DataCrud.createFile((ArrayList<Clients>) clientsList, (ArrayList<Pets>) petsList, false);

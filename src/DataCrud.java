@@ -38,7 +38,7 @@ public class DataCrud {
 
             for (Object obj : objects) {
                 if (obj instanceof Clients) {
-                    clientsList = (ArrayList<Clients>) objectIn.readObject();
+                    clientsList.add((Clients) obj);
                 }
             }
             System.out.println("Client list deserialized.");
@@ -56,10 +56,10 @@ public class DataCrud {
              ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
 
             ArrayList<Object> objects = (ArrayList<Object>) objectIn.readObject();
-
+            System.out.println(objects);
             for (Object obj : objects) {
                 if (obj instanceof Pets) {
-                    petsList = (ArrayList<Pets>) objectIn.readObject();
+                    petsList.add((Pets) obj);
                 }
             }
             System.out.println("Pets list deserialized.");
