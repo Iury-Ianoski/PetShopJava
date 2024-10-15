@@ -95,6 +95,39 @@ public class Main {
         return 0;
     }
 
+    public static int selecionarServico(){
+        Scanner input = new Scanner(System.in);
+
+        try {
+            System.out.println("Selecione o cliente");
+            for (int i = 0; i < servicesList.size(); i++) {
+                System.out.println((i + 1) + ". " + servicesList.get(i).getServiceName() + ";" + servicesList.get(i).getPrice());
+            }
+
+            int opcService = -1;
+            while (true) {
+                try {
+                    System.out.print("Digite a opção do serviço: ");
+                    opcService = input.nextInt() - 1;
+                    input.nextLine();
+
+                    if (opcService >= 0 && opcService < clientsList.size()) {
+                        break;
+                    } else {
+                        System.out.println("Opção inválida! Digite um número válido.");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida! Por favor, insira um número.");
+                    input.next();
+                }
+            }
+            return opcService;
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
+        }
+        return 0;
+    }
+
         public static int menuPrincipal() {
             Scanner input = new Scanner(System.in);
             String opcMenu;
@@ -350,5 +383,7 @@ public class Main {
                 System.out.println("Pet adicionado com sucesso ao cliente " + clientsList.get(clientIndex).getName() + "!");
 
         }
+
+
 
     }

@@ -7,10 +7,8 @@ public class DataCrud {
     public static void createFile(ArrayList<Clients> clientsList, ArrayList<Pets> petsList, boolean appendMode) {
         try (FileOutputStream fileOut = new FileOutputStream("Dados.dat", appendMode);
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
-            objectOut.writeObject(clientsList);  // Serialize the list
-            System.out.println("Clients list serialized.");
+            objectOut.writeObject(clientsList);
             objectOut.writeObject(petsList);
-            System.out.println("Pets list serialized.");
             System.out.println("Arquivo criado");
         } catch (IOException e) {
             System.err.println("Erro na criação do arquivo: " + e.getMessage());
@@ -21,8 +19,6 @@ public class DataCrud {
         try (FileOutputStream fileOut = new FileOutputStream("Services.dat", false);
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
             objectOut.writeObject(servicesList);
-            System.out.println("Service list serialized.");
-            System.out.println("Arquivo de serviços criado");
         } catch (IOException e) {
             System.err.println("Erro na criação do arquivo: " + e.getMessage());
         }
@@ -41,7 +37,6 @@ public class DataCrud {
                     clientsList.add((Clients) obj);
                 }
             }
-            System.out.println("Client list deserialized.");
 
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Erro na leitura do arquivo: " + e.getMessage());
@@ -62,7 +57,6 @@ public class DataCrud {
                     petsList.add((Pets) obj);
                 }
             }
-            System.out.println("Pets list deserialized.");
 
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Erro na leitura do arquivo: " + e.getMessage());
@@ -77,8 +71,6 @@ public class DataCrud {
              ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
 
             servicesList = (ArrayList<Services>) objectIn.readObject();
-
-            System.out.println("Services list deserialized.");
 
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Erro na leitura do arquivo: " + e.getMessage());
@@ -113,6 +105,12 @@ public class DataCrud {
                 clientPets.remove(pet);
                 petsList.remove(i);
             }
+        }
+    }
+
+    public void selectService(ArrayList<Services> servicesList){
+        for (int i = 0; i < servicesList.size(); i++){
+            System.out.println("");
         }
     }
 }
