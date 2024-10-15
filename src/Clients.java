@@ -22,13 +22,11 @@ public class Clients implements Serializable {
 
     @Override
     public String toString() {
-        return "Clients{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", balance=" + balance +
-                ", pets=" + pets +
-                '}';
+        return "Nome: " + name + "\n" +
+                "Endereço: " + address + "\n" +
+                "Telefone: " + phoneNumber + "\n" +
+                "Saldo: " + balance + "\n" +
+                "\nPets: \n" + pets;
     }
 
     public String getName() {

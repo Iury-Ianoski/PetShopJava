@@ -21,14 +21,12 @@ public class Pets implements Serializable {
 
     @Override
     public String toString() {
-        return "Pets{" +
-                "Nome='" + name + '\n' +
-                "Espécie='" + species + '\n' +
-                "Raça='" + breed + '\n' +
-                "Nome='" + name + '\n' +
-                "Idade='" + age + '\n' +
-                "Descrição='" + description + '\n' +
-                '}';
+        return  "Nome: " + name + "\n" +
+                "Idade: " + age + "\n" +
+                "Espécie: " + species + "\n" +
+                "Raça: " + breed + "\n" +
+                "Descrição: " + description;
+
     }
 
     public String getSpecies() {
