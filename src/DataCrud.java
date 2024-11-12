@@ -70,7 +70,6 @@ public class DataCrud {
     public static void deleteClient(int clientIndex, ArrayList<Clients> clientsList) {
         clientsList.remove(clientIndex);
         System.out.println("Client deleted");
-        return;
     }
 
     public static void deletePet(int clientIndex, int petIndex, ArrayList<Pets> petsList, ArrayList<Clients> clientsList) {
@@ -88,7 +87,6 @@ public class DataCrud {
         } catch (IndexOutOfBoundsException e){
             System.out.println("O usuário não possui pets para serem deletados");
         }
-        return;
     }
 
     public static void deleteAllPets(int clientIndex, ArrayList<Pets> petsList, ArrayList<Clients> clientsList) {
@@ -107,7 +105,6 @@ public class DataCrud {
         } catch (IndexOutOfBoundsException e){
             System.out.println("O usuário não possui pets para serem deletados");
         }
-        return;
     }
 
     public static void launchService(ArrayList<Services> servicesList, ArrayList<Clients> clientsList, int clientIndex, int serviceIndex){
@@ -115,7 +112,6 @@ public class DataCrud {
         Clients client = clientsList.get(clientIndex);
         client.setBalance(client.getBalance() - service.getPrice());
         System.out.println("O valor de R$" + service.getPrice() + " foi debitado da conta do cliente " + client.getName());
-        return;
     }
 
     public static void launchPayment(ArrayList<Clients> clientsList, int clientIndex, Scanner input){
@@ -124,7 +120,6 @@ public class DataCrud {
         double payment = input.nextDouble();
         client.setBalance(client.getBalance() + payment);
         System.out.println("O valor de R$" + payment + " foi debitado da conta do cliente " + client.getName());
-        return;
     }
 
     public static void customerBalances(ArrayList<Clients> clientsList){

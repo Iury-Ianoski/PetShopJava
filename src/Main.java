@@ -8,12 +8,7 @@ public class Main {
     static ArrayList<Pets> petsList = DataCrud.readPets(clientsList);
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        //System.out.println(servicesList);
-        System.out.println(clientsList);
-        //TODO rever as classes de criação e seleção, talvez muda-las de lugar e refatora-las
-        System.out.println(petsList);
         Menus.callMenus(clientsList, petsList, servicesList, input);
-
     }
 
     public static int selecionarCliente() {
@@ -123,21 +118,19 @@ public class Main {
     public static void incluirClientes() {
         try {
             System.out.println("Informações do Cliente");
-
+            input.next();
             System.out.print("Nome: ");
             String nomeCli = input.nextLine();
             System.out.print("Endereço: ");
             String enderecoCli = input.nextLine();
             System.out.print("Telefone: ");
             String telefoneCli = input.nextLine();
-
             double saldoCli = 0;
             while (true) {
                 try {
                     System.out.print("Saldo: ");
                     saldoCli = input.nextDouble();
                     input.nextLine();
-
                     if (saldoCli >= 0) break; // Saldo válido
                     System.out.println("O saldo deve ser um número não negativo.");
                 } catch (InputMismatchException e) {
@@ -145,16 +138,13 @@ public class Main {
                     input.next();
                 }
             }
-
             ArrayList<Pets> listaPets = new ArrayList<>();
-
             char adicionaPet;
             while (true) {
                 try {
                     System.out.print("\nEsse cliente possui um pet para cadastrar? (s/n): ");
                     adicionaPet = input.next().toLowerCase().charAt(0);
                     input.nextLine();
-
                     if (adicionaPet == 's' || adicionaPet == 'n') {
                         break;
                     }
@@ -163,7 +153,6 @@ public class Main {
                     System.out.println("Ocorreu um erro! Tente novamente.");
                 }
             }
-
             // para incluir mais de um pet, se desejado
             while (adicionaPet == 's') {
                 try {
